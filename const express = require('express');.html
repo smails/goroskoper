@@ -1,0 +1,22 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const PORT = process.env.PORT || 3000
+
+const app = express();
+
+async function start(){
+	try {
+		await mongoose.connect(
+			'mongodb+srv://smailsjob:vHh5lgE1NABpbTkT@cluster0-ynryy.mongodb.net/gscope', {
+				useUnifiedTopology: true,
+				useNewUrlParser: true
+			})
+		app.listen(PORT, () => {
+			console.log('Сервер запущен')
+		})
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+start();
